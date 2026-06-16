@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HomeHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--surface);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .signup-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Left Side - Info */
+        .signup-info {
+            padding: 2rem;
+        }
+
+        .signup-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .signup-info p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .features-list li:before {
+            content: "✓";
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Right Side - Form */
+        .signup-form {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+
+        .signup-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .signup-form > p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Form Steps */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            background: var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .step.active .step-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        /* Role Selection */
+        .role-selection {
+            margin-bottom: 2rem;
+        }
+
+        .role-selection label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .role-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .role-option {
+            position: relative;
+            display: none;
+        }
+
+        .role-option input {
+            display: none;
+        }
+
+        .role-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.5rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: var(--bg);
+            text-align: center;
+        }
+
+        .role-option input:checked + .role-label {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .role-label:hover {
+            border-color: var(--primary);
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+        }
+
+        .role-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-group a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.85rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .signup-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-info {
+                order: 2;
+            }
+
+            .signup-form {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .signup-info h1 {
+                font-size: 2rem;
+            }
+
+            .signup-form {
+                padding: 2rem;
+            }
+
+            .role-options {
+                grid-template-columns: 1fr;
+            }
+
+            .features-list {
+                display: none;
+            }
+
+            .form-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="container">
+        <div class="signup-wrapper">
+            <!-- Left Side -->
+            <div class="signup-info">
+                <h1>Join HomeHub Today</h1>
+                <p>Manage rent payments seamlessly and connect with your community.</p>
+                
+                <ul class="features-list">
+                    <li>Instant payment processing</li>
+                    <li>Secure transactions</li>
+                    <li>Payment history tracking</li>
+                    <li>Direct messaging</li>
+                    <li>Community access</li>
+                </ul>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="signup-form">
+                <h2>Create Account</h2>
+                <p>Choose your role to get started</p>
+
+                <div class="steps">
+                    <div class="step active">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Role</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Details</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Done</div>
+                    </div>
+                </div>
+
+                <form id="signupForm">
+                    <!-- Role Selection -->
+                    <div class="role-selection">
+                        <label>I am a:</label>
+                        <div class="role-options">
+                            <div class="role-option">
+                                <input type="radio" id="tenant" name="role" value="tenant" required>
+                                <label for="tenant" class="role-label">
+                                    <span class="role-icon">🏠</span>
+                                    <span class="role-name">Tenant</span>
+                                </label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="homeowner" name="role" value="homeowner">
+                                <label for="homeowner" class="role-label">
+                                    <span class="role-icon">🔑</span>
+                                    <span class="role-name">Home Owner</span>
+                                </label>
+                            </div>
+                            <div class="role-option">
+                                <input type="radio" id="agent" name="role" value="agent">
+                                <label for="agent" class="role-label">
+                                    <span class="role-icon">👔</span>
+                                    <span class="role-name">Agent</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Fields -->
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Kipchoge" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+254 712 345678" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Minimum 8 characters" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" id="confirm" name="confirm" placeholder="Confirm your password" required>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Continue</button>
+                    </div>
+
+                    <div class="login-link">
+                        Already have an account? <a href="login.html">Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Show role options
+        document.querySelectorAll('.role-option input').forEach(input => {
+            input.parentElement.style.display = 'block';
+        });
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const role = document.querySelector('input[name="role"]:checked').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+
+            // Validation
+            if (password !== confirm) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters!');
+                return;
+            }
+
+            // API call
+            const API_BASE_URL = 'https://homehub-api.onrender.com';
+            
+            fetch(`${API_BASE_URL}/api/auth/register`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    password,
+                    role
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    // Store token
+                    localStorage.setItem('token', data.data.token);
+                    localStorage.setItem('user', JSON.stringify(data.data.user));
+                    
+                    // Redirect based on role
+                    if (role === 'tenant') {
+                        window.location.href = 'dashboard-tenant.html';
+                    } else if (role === 'homeowner') {
+                        window.location.href = 'dashboard-homeowner.html';
+                    } else {
+                        window.location.href = 'dashboard-agent.html';
+                    }
+                } else {
+                    alert('Signup failed: ' + data.message);
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                alert('An error occurred. Please check your connection.');
+            });
+        });
+    </script>
+</body>
+</html>

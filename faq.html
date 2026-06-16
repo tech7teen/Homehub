@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - HomeHub</title>
+    <style>
+        :root { --primary: #6366f1; --bg: #f5f7fa; --surface: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --border: #e1e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; }
+        .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 1rem; }
+        .faq-question { padding: 1.5rem; cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question:hover { background: var(--bg); }
+        .faq-answer { padding: 1.5rem; border-top: 1px solid var(--border); display: none; color: var(--text-secondary); }
+        .faq-answer.show { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.querySelector('.faq-answer').classList.toggle('show')">
+                <span>How do I pay rent on HomeHub?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">We support M-Pesa and Bank Transfer. Simply select your preferred method, enter the amount, and complete the transaction. It takes less than a minute!</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.querySelector('.faq-answer').classList.toggle('show')">
+                <span>Is HomeHub secure?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">Yes! We use bank-level encryption to protect all your data and transactions. Your information is always safe with us.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.querySelector('.faq-answer').classList.toggle('show')">
+                <span>Can I get a receipt for my payment?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">Absolutely! You'll receive a receipt immediately after payment, and you can access all your past receipts in your payment history.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="this.parentElement.querySelector('.faq-answer').classList.toggle('show')">
+                <span>How long does payment processing take?</span>
+                <span>▼</span>
+            </div>
+            <div class="faq-answer">M-Pesa payments are processed instantly. Bank transfers typically take 1-2 business days depending on your bank.</div>
+        </div>
+    </div>
+</body>
+</html>

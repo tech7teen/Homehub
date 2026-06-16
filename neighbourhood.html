@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - HomeHub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; color: var(--text-primary); }
+        .post { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .post-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .avatar { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        .post-author { flex: 1; }
+        .post-name { font-weight: 600; color: var(--text-primary); }
+        .post-time { font-size: 0.85rem; color: var(--text-secondary); }
+        .post-content { color: var(--text-primary); line-height: 1.6; margin-bottom: 1rem; }
+        .post-actions { display: flex; gap: 2rem; color: var(--text-secondary); }
+        .post-action { cursor: pointer; transition: color 0.3s; }
+        .post-action:hover { color: var(--primary); }
+        .btn { width: 100%; padding: 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 2rem; }
+        @media (max-width: 768px) {
+            .container { padding: 1rem 15px; }
+            h1 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="dashboard-tenant.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>👥 Community Hub</h1>
+        
+        <button class="btn" onclick="window.location.href='#'">📝 Create Post</button>
+
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">SM</div>
+                <div class="post-author">
+                    <div class="post-name">Sarah M.</div>
+                    <div class="post-time">2 hours ago</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Great community here at Riverside! Just met some amazing neighbors. Building a strong sense of community. 🏠
+            </div>
+            <div class="post-actions">
+                <span class="post-action">👍 12 Likes</span>
+                <span class="post-action">💬 3 Comments</span>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">JK</div>
+                <div class="post-author">
+                    <div class="post-name">John K.</div>
+                    <div class="post-time">5 hours ago</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Maintenance is scheduled for tomorrow morning. Please ensure water is available. Thank you!
+            </div>
+            <div class="post-actions">
+                <span class="post-action">👍 8 Likes</span>
+                <span class="post-action">💬 2 Comments</span>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="post-header">
+                <div class="avatar">AM</div>
+                <div class="post-author">
+                    <div class="post-name">Alice M.</div>
+                    <div class="post-time">1 day ago</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Lost a set of keys near the main entrance. If anyone finds them, please let me know. Reward offered! 🔑
+            </div>
+            <div class="post-actions">
+                <span class="post-action">👍 5 Likes</span>
+                <span class="post-action">💬 1 Comment</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

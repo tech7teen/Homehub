@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt - HomeHub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #6366f1; --success: #10b981; --bg: #f5f7fa; --surface: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --border: #e1e8f0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); padding: 2rem 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 2rem 20px; }
+        .receipt { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; text-align: center; }
+        .receipt-header { margin-bottom: 2rem; }
+        .checkmark { font-size: 4rem; margin-bottom: 1rem; }
+        h1 { color: var(--success); margin-bottom: 1rem; font-size: 1.8rem; }
+        .receipt-details { text-align: left; background: var(--bg); padding: 2rem; border-radius: 8px; margin: 2rem 0; }
+        .detail-row { display: flex; justify-content: space-between; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+        .detail-row:last-child { border-bottom: none; }
+        .label { color: var(--text-secondary); }
+        .value { font-weight: 600; color: var(--text-primary); }
+        .buttons { display: flex; gap: 1rem; }
+        button { flex: 1; padding: 1rem; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: var(--border); color: var(--text-primary); }
+        @media print { body { background: white; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="receipt">
+            <div class="receipt-header">
+                <div class="checkmark">✓</div>
+                <h1>Payment Successful</h1>
+                <p style="color: var(--text-secondary);">Thank you for your payment</p>
+            </div>
+
+            <div class="receipt-details">
+                <div class="detail-row">
+                    <span class="label">Transaction ID:</span>
+                    <span class="value">MHZ0123456789</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Amount Paid:</span>
+                    <span class="value">KES 38,500</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Payment Method:</span>
+                    <span class="value">M-Pesa</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Date:</span>
+                    <span class="value">June 15, 2024</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Time:</span>
+                    <span class="value">2:45 PM</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Property:</span>
+                    <span class="value">Riverside Apt - Unit 104</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">Month Covered:</span>
+                    <span class="value">June 2024</span>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn-primary" onclick="window.print()">Print Receipt</button>
+                <button class="btn-secondary" onclick="window.location.href='payments.html'">Back to Payments</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

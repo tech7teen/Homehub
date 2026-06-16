@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Rent - HomeHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --success: #10b981;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+
+        header {
+            background: var(--surface);
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .amount-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-option {
+            position: relative;
+        }
+
+        .payment-option input {
+            display: none;
+        }
+
+        .payment-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.5rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-option input:checked + .payment-label {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+        }
+
+        .payment-name {
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .summary {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 2px solid var(--border);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .amount-display {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="dashboard-tenant.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>💳 Pay Your Rent</h1>
+
+        <div class="card">
+            <h2 style="margin-bottom: 1rem;">Payment Details</h2>
+            
+            <div class="form-group">
+                <label>Property</label>
+                <input type="text" value="Riverside Apartments - Unit 104" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Monthly Rent</label>
+                <div class="amount-display">KES 38,500</div>
+            </div>
+
+            <div class="form-group">
+                <label for="month">For Month</label>
+                <select id="month">
+                    <option>July 2024</option>
+                    <option>August 2024</option>
+                    <option>September 2024</option>
+                </select>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Select Payment Method</h3>
+            
+            <div class="payment-methods">
+                <div class="payment-option">
+                    <input type="radio" id="mpesa" name="method" value="mpesa" checked>
+                    <label for="mpesa" class="payment-label">
+                        <span class="payment-icon">📱</span>
+                        <span class="payment-name">M-Pesa</span>
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="bank" name="method" value="bank">
+                    <label for="bank" class="payment-label">
+                        <span class="payment-icon">🏦</span>
+                        <span class="payment-name">Bank Transfer</span>
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="card" name="method" value="card" disabled>
+                    <label for="card" class="payment-label" style="opacity: 0.5;">
+                        <span class="payment-icon">💳</span>
+                        <span class="payment-name">Card (Soon)</span>
+                    </label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="crypto" name="method" value="crypto" disabled>
+                    <label for="crypto" class="payment-label" style="opacity: 0.5;">
+                        <span class="payment-icon">₿</span>
+                        <span class="payment-name">Crypto (Soon)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" id="phoneGroup">
+                <label for="phone">M-Pesa Phone Number</label>
+                <input type="tel" id="phone" placeholder="0712 345678">
+            </div>
+
+            <div class="summary">
+                <div class="summary-row">
+                    <span>Rent Amount</span>
+                    <span>KES 38,500</span>
+                </div>
+                <div class="summary-row">
+                    <span>Transaction Fee</span>
+                    <span>KES 0</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total Amount</span>
+                    <span>KES 38,500</span>
+                </div>
+            </div>
+
+            <button class="btn" onclick="processPayment()">Complete Payment</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('input[name="method"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const phoneGroup = document.getElementById('phoneGroup');
+                phoneGroup.style.display = this.value === 'mpesa' ? 'block' : 'none';
+            });
+        });
+
+        function processPayment() {
+            const method = document.querySelector('input[name="method"]:checked').value;
+            const amount = 38500;
+            const month = document.getElementById('month').value;
+
+            const API_BASE_URL = 'https://homehub-api.onrender.com';
+            const token = localStorage.getItem('token');
+
+            let payload = {
+                amount,
+                month
+            };
+
+            if (method === 'mpesa') {
+                payload.phone = document.getElementById('phone').value;
+                endpoint = '/api/payment/mpesa';
+            } else if (method === 'bank') {
+                endpoint = '/api/payment/bank-transfer';
+            }
+
+            fetch(`${API_BASE_URL}${endpoint}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Payment initiated successfully!');
+                    window.location.href = 'payments.html';
+                } else {
+                    alert('Payment failed: ' + data.message);
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                alert('An error occurred. Please try again.');
+            });
+        }
+    </script>
+</body>
+</html>

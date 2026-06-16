@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeHub - Rent Payments Made Effortless</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-tertiary: #94a3b8;
+            --border: #e1e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline-white:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: var(--surface);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* User Types Section */
+        .user-types {
+            padding: 6rem 0;
+            background: var(--bg);
+        }
+
+        .user-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .user-type-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .user-type-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .user-type-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .user-type-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .user-type-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .user-type-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .user-type-card li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-type-card li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            padding: 6rem 0;
+            background: var(--surface);
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .payment-card {
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .payment-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .payment-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .payment-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .status-live {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-coming {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        /* Stats */
+        .stats {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 0;
+            background: var(--bg);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-white, .btn-outline-white {
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#payment">Payment</a></li>
+                <li><a href="#users">For You</a></li>
+                <li><a href="#stats">Why Us</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Rent Payments Made Effortless</h1>
+            <p>Pay rent, manage properties, and connect with your community—all in one place. Fast, secure, and designed for Kenya.</p>
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn-white">Start Free Trial</a>
+                <a href="#features" class="btn-outline-white">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need for seamless rent management</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Payments</h3>
+                    <p>Pay rent in seconds with M-Pesa, bank transfer, or cryptocurrency. No delays, no hassle.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Payment History</h3>
+                    <p>View all your transactions, receipts, and payment status in one clear dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Direct Messaging</h3>
+                    <p>Chat with landlords, property managers, and neighbors instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community Hub</h3>
+                    <p>Connect with neighbors, share updates, and build community within your building.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Smart Analytics</h3>
+                    <p>Track spending patterns and get insights for better financial planning.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>100% Secure</h3>
+                    <p>Bank-level encryption protects your data and transactions at all times.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Types -->
+    <section id="users" class="user-types">
+        <div class="container">
+            <h2 class="section-title">Built for Everyone</h2>
+            <p class="section-subtitle">Whether you're renting, owning, or managing properties</p>
+            
+            <div class="user-types-grid">
+                <div class="user-type-card">
+                    <div class="user-type-icon">🏠</div>
+                    <h3>Tenants</h3>
+                    <p>Pay rent on your schedule, track payments, and connect with neighbors.</p>
+                    <ul>
+                        <li>Easy rent payment</li>
+                        <li>Payment history</li>
+                        <li>Receipt generation</li>
+                        <li>Community access</li>
+                    </ul>
+                </div>
+                <div class="user-type-card">
+                    <div class="user-type-icon">🔑</div>
+                    <h3>Home Owners</h3>
+                    <p>Manage properties, collect rent, and interact with your tenants.</p>
+                    <ul>
+                        <li>Rent collection</li>
+                        <li>Tenant management</li>
+                        <li>Payment tracking</li>
+                        <li>Analytics dashboard</li>
+                    </ul>
+                </div>
+                <div class="user-type-card">
+                    <div class="user-type-icon">👔</div>
+                    <h3>Property Agents</h3>
+                    <p>Manage multiple properties, tenants, and payments effortlessly.</p>
+                    <ul>
+                        <li>Multi-property management</li>
+                        <li>Tenant database</li>
+                        <li>Collections report</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods -->
+    <section id="payment" class="payment-methods">
+        <div class="container">
+            <h2 class="section-title">Multiple Payment Options</h2>
+            <p class="section-subtitle">Choose the payment method that works best for you</p>
+            
+            <div class="payment-grid">
+                <div class="payment-card">
+                    <div class="payment-icon">📱</div>
+                    <h4>M-Pesa</h4>
+                    <p>Fast, secure mobile money transfer</p>
+                    <span class="payment-status status-live">✓ Available</span>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">🏦</div>
+                    <h4>Bank Transfer</h4>
+                    <p>Direct bank-to-bank payments</p>
+                    <span class="payment-status status-live">✓ Available</span>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">💳</div>
+                    <h4>Card Payments</h4>
+                    <p>Visa, Mastercard, and more</p>
+                    <span class="payment-status status-coming">⏳ Coming Soon</span>
+                </div>
+                <div class="payment-card">
+                    <div class="payment-icon">₿</div>
+                    <h4>Cryptocurrency</h4>
+                    <p>Bitcoin, Ethereum, USDC</p>
+                    <span class="payment-status status-coming">⏳ Coming Soon</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Secure</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Available</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1 min</h3>
+                    <p>Processing</p>
+                </div>
+                <div class="stat-item">
+                    <h3>0</h3>
+                    <p>Hidden Fees</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Rent Payments?</h2>
+            <p>Join thousands of tenants and landlords already using HomeHub</p>
+            <a href="signup.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.05rem;">Sign Up Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 HomeHub. All rights reserved.</p>
+            <p>Making rent payments effortless in Kenya 🚀</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About HomeHub</title>
+    <style>
+        :root { --primary: #6366f1; --bg: #f5f7fa; --surface: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --border: #e1e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+        .container { max-width: 800px; margin: 0 auto; padding: 2rem 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
+        h1 { font-size: 2rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+        p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem; }
+        .values { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .value { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; border-radius: 8px; text-align: center; }
+        .value-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+        .value-title { font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>About HomeHub</h1>
+        
+        <p>HomeHub is a revolutionary platform designed to transform rent payment and community management in Kenya. We believe that paying rent shouldn't be complicated, and communities should thrive together.</p>
+
+        <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem;">Our Mission</h2>
+        <p>To make rent payments seamless, transparent, and accessible for everyone while fostering stronger communities.</p>
+
+        <h2 style="font-size: 1.5rem; margin: 2rem 0 1rem;">Our Values</h2>
+        <div class="values">
+            <div class="value">
+                <div class="value-icon">🤝</div>
+                <div class="value-title">Trust</div>
+                <p>We build trust through transparency</p>
+            </div>
+            <div class="value">
+                <div class="value-icon">💨</div>
+                <div class="value-title">Speed</div>
+                <p>Fast, instant transactions</p>
+            </div>
+            <div class="value">
+                <div class="value-icon">🌍</div>
+                <div class="value-title">Accessibility</div>
+                <p>For everyone, everywhere</p>
+            </div>
+        </div>
+
+        <p>Founded in 2024, HomeHub is committed to building the future of rent payments and community engagement in Kenya. Join us on this journey!</p>
+    </div>
+</body>
+</html>

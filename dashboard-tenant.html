@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Dashboard - HomeHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .logo-img {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 0;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 2rem 0;
+            position: sticky;
+            top: 70px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            display: flex;
+        }
+
+        .sidebar-menu a {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-menu a:hover {
+            background: var(--bg);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        .sidebar-menu a.active {
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--primary);
+            border-left-color: var(--primary);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .card-status {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Table */
+        .table-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--bg);
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: var(--bg);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+            <div class="nav-right">
+                <a href="chat.html" class="nav-link">💬</a>
+                <a href="neighbourhood.html" class="nav-link">👥</a>
+                <div class="user-profile" onclick="logout()">
+                    <div class="avatar" id="userInitial">S</div>
+                    <span id="userName">Sarah</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="dashboard-tenant.html" class="active">📊 Dashboard</a></li>
+                <li><a href="pay-rent.html">💳 Pay Rent</a></li>
+                <li><a href="payments.html">📜 Payments</a></li>
+                <li><a href="neighbourhood.html">👥 Community</a></li>
+                <li><a href="chat.html">💬 Messages</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+                <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1>Welcome back, <span id="greeting">Sarah</span>! 👋</h1>
+                <p>Here's your rent payment status and account overview</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-title">Amount Due</div>
+                    <div class="card-value">KES 38,500</div>
+                    <span class="card-status status-warning">Due: July 15, 2024</span>
+                    <button class="btn btn-primary" onclick="window.location.href='pay-rent.html'">Pay Now</button>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Total Paid</div>
+                    <div class="card-value">KES 115,500</div>
+                    <span class="card-status status-success">3 Payments Made</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Payment Status</div>
+                    <div class="card-value">Up to Date</div>
+                    <span class="card-status status-success">✓ No Arrears</span>
+                </div>
+            </div>
+
+            <!-- Recent Payments -->
+            <h2 style="margin: 2rem 0 1rem; font-size: 1.5rem;">Recent Payments</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Status</th>
+                            <th>Receipt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>June 15, 2024</td>
+                            <td>KES 38,500</td>
+                            <td>M-Pesa</td>
+                            <td><span class="card-status status-success">Completed</span></td>
+                            <td><a href="receipt.html" class="nav-link">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>May 15, 2024</td>
+                            <td>KES 38,500</td>
+                            <td>M-Pesa</td>
+                            <td><span class="card-status status-success">Completed</span></td>
+                            <td><a href="#" class="nav-link">View</a></td>
+                        </tr>
+                        <tr>
+                            <td>April 15, 2024</td>
+                            <td>KES 38,500</td>
+                            <td>Bank Transfer</td>
+                            <td><span class="card-status status-success">Completed</span></td>
+                            <td><a href="#" class="nav-link">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Property Info -->
+            <h2 style="margin: 2rem 0 1rem; font-size: 1.5rem;">Property Information</h2>
+            <div class="card">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.3rem;">Property Name</p>
+                        <p style="font-size: 1.1rem; font-weight: 600;">Riverside Apartments</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.3rem;">Unit Number</p>
+                        <p style="font-size: 1.1rem; font-weight: 600;">104</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.3rem;">Monthly Rent</p>
+                        <p style="font-size: 1.1rem; font-weight: 600;">KES 38,500</p>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.3rem;">Lease Expires</p>
+                        <p style="font-size: 1.1rem; font-weight: 600;">December 2024</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Load user data on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user') || '{"name": "User"}');
+            const initial = user.name.charAt(0).toUpperCase();
+            
+            document.getElementById('greeting').textContent = user.name.split(' ')[0];
+            document.getElementById('userName').textContent = user.name.split(' ')[0];
+            document.getElementById('userInitial').textContent = initial;
+        });
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

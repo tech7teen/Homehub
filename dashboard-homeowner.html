@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Owner Dashboard - HomeHub</title>
+    <link rel="stylesheet" href="dashboard-style.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; font-size: 1.3rem; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; }
+        .dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+        .card-title { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .card-value { font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+        .card-status { display: inline-block; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .btn { padding: 0.75rem 1.5rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        @media (max-width: 768px) { h1 { font-size: 1.5rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="dashboard-homeowner.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Welcome, Home Owner! 🏠</h1>
+        
+        <div class="dashboard">
+            <div class="card">
+                <div class="card-title">Total Collected</div>
+                <div class="card-value">KES 345,000</div>
+                <span class="card-status">18 Properties</span>
+            </div>
+            <div class="card">
+                <div class="card-title">Pending Payments</div>
+                <div class="card-value">KES 76,500</div>
+                <span class="card-status" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">2 Arrears</span>
+            </div>
+            <div class="card">
+                <div class="card-title">Collection Rate</div>
+                <div class="card-value">95%</div>
+                <span class="card-status">Excellent</span>
+            </div>
+            <div class="card">
+                <div class="card-title">Active Tenants</div>
+                <div class="card-value">45</div>
+                <span class="card-status">All Properties</span>
+            </div>
+        </div>
+
+        <h2 style="margin: 2rem 0 1rem; font-size: 1.5rem;">Recent Tenants</h2>
+        <div class="card" style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; padding: 1rem; border-bottom: 1px solid var(--border);">Tenant Name</th>
+                        <th style="text-align: left; padding: 1rem; border-bottom: 1px solid var(--border);">Property</th>
+                        <th style="text-align: left; padding: 1rem; border-bottom: 1px solid var(--border);">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem;">Sarah Mwangi</td>
+                        <td style="padding: 1rem;">Riverside Apt 104</td>
+                        <td style="padding: 1rem;"><span class="card-status">Paid</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 1rem;">John Kipchoge</td>
+                        <td style="padding: 1rem;">Nairobi Plaza 201</td>
+                        <td style="padding: 1rem;"><span class="card-status">Paid</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

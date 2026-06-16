@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties - HomeHub</title>
+    <style>
+        :root { --primary: #6366f1; --bg: #f5f7fa; --surface: #ffffff; --text-primary: #1e293b; --text-secondary: #64748b; --border: #e1e8f0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; }
+        .properties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .property-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all 0.3s; }
+        .property-card:hover { border-color: var(--primary); box-shadow: 0 8px 20px rgba(99, 102, 241, 0.1); }
+        .property-header { background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); color: white; padding: 2rem; text-align: center; }
+        .property-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .property-body { padding: 1.5rem; }
+        .property-detail { display: flex; justify-content: space-between; padding: 0.5rem 0; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+        .property-detail:last-child { border-bottom: none; }
+        .property-label { font-weight: 500; color: var(--text-primary); }
+        .property-action { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        button { flex: 1; padding: 0.6rem; background: var(--primary); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="dashboard-agent.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>🏢 My Properties</h1>
+        
+        <div class="properties-grid">
+            <div class="property-card">
+                <div class="property-header">
+                    <div class="property-name">Riverside Apartments</div>
+                    <div>Nairobi</div>
+                </div>
+                <div class="property-body">
+                    <div class="property-detail">
+                        <span class="property-label">Units:</span>
+                        <span>45</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Occupancy:</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Revenue:</span>
+                        <span>KES 173K</span>
+                    </div>
+                    <div class="property-action">
+                        <button>View Details</button>
+                        <button>Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-header">
+                    <div class="property-name">Nairobi Plaza</div>
+                    <div>Downtown</div>
+                </div>
+                <div class="property-body">
+                    <div class="property-detail">
+                        <span class="property-label">Units:</span>
+                        <span>32</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Occupancy:</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Revenue:</span>
+                        <span>KES 123K</span>
+                    </div>
+                    <div class="property-action">
+                        <button>View Details</button>
+                        <button>Edit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="property-card">
+                <div class="property-header">
+                    <div class="property-name">Downtown Towers</div>
+                    <div>CBD</div>
+                </div>
+                <div class="property-body">
+                    <div class="property-detail">
+                        <span class="property-label">Units:</span>
+                        <span>79</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Occupancy:</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="property-detail">
+                        <span class="property-label">Revenue:</span>
+                        <span>KES 281.5K</span>
+                    </div>
+                    <div class="property-action">
+                        <button>View Details</button>
+                        <button>Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

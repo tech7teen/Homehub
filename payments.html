@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment History - HomeHub</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6366f1;
+            --bg: #f5f7fa;
+            --surface: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e1e8f0;
+            --success: #10b981;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text-primary); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 20px; }
+        header { background: var(--surface); padding: 1.5rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; font-size: 1.3rem; }
+        .logo-img { width: 35px; height: 35px; background: linear-gradient(135deg, var(--primary) 0%, #a855f7 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+        h1 { font-size: 2rem; margin-bottom: 2rem; }
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--bg); padding: 1rem; text-align: left; font-weight: 600; border-bottom: 1px solid var(--border); }
+        td { padding: 1rem; border-bottom: 1px solid var(--border); }
+        tr:hover { background: var(--bg); }
+        .status-badge { display: inline-block; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
+        .status-success { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        @media (max-width: 768px) {
+            table { font-size: 0.9rem; }
+            th, td { padding: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="dashboard-tenant.html" class="logo">
+                <div class="logo-img">H</div>
+                HomeHub
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>📜 Payment History</h1>
+        
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Method</th>
+                        <th>Reference</th>
+                        <th>Status</th>
+                        <th>Receipt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>June 15, 2024</td>
+                        <td>KES 38,500</td>
+                        <td>M-Pesa</td>
+                        <td>MHZ0123456789</td>
+                        <td><span class="status-badge status-success">Completed</span></td>
+                        <td><a href="receipt.html">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>May 15, 2024</td>
+                        <td>KES 38,500</td>
+                        <td>M-Pesa</td>
+                        <td>MHZ0987654321</td>
+                        <td><span class="status-badge status-success">Completed</span></td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>April 15, 2024</td>
+                        <td>KES 38,500</td>
+                        <td>Bank Transfer</td>
+                        <td>BANK001</td>
+                        <td><span class="status-badge status-success">Completed</span></td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>March 15, 2024</td>
+                        <td>KES 38,500</td>
+                        <td>M-Pesa</td>
+                        <td>MHZ1111111111</td>
+                        <td><span class="status-badge status-success">Completed</span></td>
+                        <td><a href="#">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
